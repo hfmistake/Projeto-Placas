@@ -7,6 +7,11 @@ import cv2
 import torch
 
 
+def distraction():
+    print("Só para deixar a inspeção do pycharm mais feliz :)")
+    print(os.getcwd())
+
+
 def show(video_source):
     if not torch.cuda.is_available():
         print("AVISO!!! a sua GPU não está disponível.")
@@ -54,14 +59,14 @@ def predict(video_source, line, model, object_names, object_indices, directory):
 
 def main():
     linha_22 = [100, 300, 1800, 300]
-    linha_23 = [200, 330, 800, 330]
+    # linha_23 = [200, 330, 800, 330]
     vehicles = ["car", "motorcycle", "truck", "bus"]
     vehicles_index = [2, 3, 5, 7]
-    cam22 = os.environ.get("CAM_22")
-    cam23 = os.environ.get("CAM_23")
+    # cam22 = os.environ.get("CAM_22")
+    # cam23 = os.environ.get("CAM_23")
     model_escolhido = YOLO('models/yolov8n.pt')
     video1 = "videos/1.mp4"
-    video2 = "videos/2.mp4"
+    # video2 = "videos/2.mp4"
 
     thread_tracker = threading.Thread(target=predict,
                                       args=(video1, linha_22, model_escolhido, vehicles, vehicles_index, "results22"),
