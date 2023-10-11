@@ -1,6 +1,7 @@
 import os
 from ultralytics import YOLO
 from PIL import Image
+import uuid as uid
 
 # linha para camera 22
 limits = [100, 300, 1800, 300]
@@ -8,6 +9,7 @@ limits = [100, 300, 1800, 300]
 vehicles = ["car", "motorcycle", "truck", "bus"]
 vehicles_index = [2, 3, 5, 7]
 
+source = "videos/2.mp4"
 # cam 1
 # source = os.environ.get("CAM_22")
 # cam 2
@@ -40,6 +42,6 @@ for r in results:
                 else:
                     filt.append(track_id)
                 im = Image.fromarray(r.orig_img)
-                im.save(f'results/results{x}.jpg')
+                im.save(f'results/{uid.uuid4()}.jpg')
                 x += 1
                 print("captura realizada")
